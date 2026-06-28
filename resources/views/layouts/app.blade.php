@@ -12,7 +12,9 @@
     @auth
         <nav class="bg-white border-b">
             <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center gap-4 text-sm">
-                <a href="{{ route('stocks.index') }}" class="font-bold">在庫管理システム</a>
+                <a href="{{ route('dashboard') }}" class="font-bold">在庫管理システム</a>
+                <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">ダッシュボード</a>
+                <a href="{{ route('stocks.index') }}" class="text-blue-600 hover:underline">在庫</a>
                 <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">商品</a>
                 <a href="{{ route('partners.index') }}" class="text-blue-600 hover:underline">取引先</a>
                 <a href="{{ route('purchase_orders.index') }}" class="text-blue-600 hover:underline">発注</a>

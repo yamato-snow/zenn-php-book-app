@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrderController;
@@ -8,11 +9,6 @@ use App\Http\Controllers\SalesOrderController;
 use App\Http\Controllers\StockController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
-
-// トップページ。ログインしていれば在庫一覧へ、していなければログインへ。
-Route::get('/', function () {
-    return redirect()->route('stocks.index');
-});
 
 // --- ログインしていなくても開けるページ（認証）---
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
@@ -23,6 +19,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // --- ここから下は、ログインしていないと開けない（auth ミドルウェア）---
 Route::middleware('auth')->group(function () {
+
+    // トップページ＝ダッシュボード（既存データの集計を一覧表示）
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // ToDo リストの CRUD（Ch06 の練習台）
     Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');
