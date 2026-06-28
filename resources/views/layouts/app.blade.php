@@ -8,6 +8,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 text-gray-800">
+    {{-- ログインしているときだけ、上部にナビゲーションを表示する。 --}}
+    @auth
+        <nav class="bg-white border-b">
+            <div class="max-w-5xl mx-auto px-6 py-3 flex flex-wrap items-center gap-4 text-sm">
+                <a href="{{ route('stocks.index') }}" class="font-bold">在庫管理システム</a>
+                <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline">商品</a>
+                <a href="{{ route('partners.index') }}" class="text-blue-600 hover:underline">取引先</a>
+                <a href="{{ route('purchase_orders.index') }}" class="text-blue-600 hover:underline">発注</a>
+                <a href="{{ route('sales_orders.index') }}" class="text-blue-600 hover:underline">受注</a>
+                <a href="{{ route('stocks.history') }}" class="text-blue-600 hover:underline">入出庫履歴</a>
+                <div class="ml-auto flex items-center gap-3">
+                    <span class="text-gray-500">{{ auth()->user()->name }} さん</span>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="text-red-600 hover:underline">ログアウト</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    @endauth
+
     <div class="max-w-2xl mx-auto p-6">
         <h1 class="text-2xl font-bold mb-4">@yield('title', '在庫管理システム')</h1>
 
