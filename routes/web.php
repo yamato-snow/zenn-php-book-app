@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,11 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+
+// 取引先マスタの CRUD（CRUD の型・3回目）
+Route::get('/partners', [PartnerController::class, 'index'])->name('partners.index');
+Route::get('/partners/create', [PartnerController::class, 'create'])->name('partners.create');
+Route::post('/partners', [PartnerController::class, 'store'])->name('partners.store');
+Route::get('/partners/{partner}/edit', [PartnerController::class, 'edit'])->name('partners.edit');
+Route::put('/partners/{partner}', [PartnerController::class, 'update'])->name('partners.update');
+Route::delete('/partners/{partner}', [PartnerController::class, 'destroy'])->name('partners.destroy');
