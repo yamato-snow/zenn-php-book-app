@@ -4,6 +4,7 @@ use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PurchaseOrderController;
 use App\Http\Controllers\SalesOrderController;
+use App\Http\Controllers\StockController;
 use App\Http\Controllers\TodoController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,3 +50,7 @@ Route::get('/sales-orders/create', [SalesOrderController::class, 'create'])->nam
 Route::post('/sales-orders', [SalesOrderController::class, 'store'])->name('sales_orders.store');
 Route::get('/sales-orders/{salesOrder}', [SalesOrderController::class, 'show'])->name('sales_orders.show');
 Route::post('/sales-orders/{salesOrder}/ship', [SalesOrderController::class, 'ship'])->name('sales_orders.ship');
+
+// 在庫一覧と入出庫履歴
+Route::get('/stocks', [StockController::class, 'index'])->name('stocks.index');
+Route::get('/stock-transactions', [StockController::class, 'history'])->name('stocks.history');
