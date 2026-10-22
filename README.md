@@ -1,3 +1,30 @@
+# zenn-php-book-app
+
+Zenn の本「サクッと始めるPHP業務システム開発」のサンプルコードです。各章の完成形には `chapter05`〜`chapter16` のタグを付けています。
+
+## 動かすのに必要な版（2026年10月22日更新）
+
+2026年10月21日に公表された PHP の脆弱性（CVE-2026-109618・CVE-2026-109619）と Node.js のセキュリティリリースに合わせて、次の版以降を前提にしています。
+
+- PHP：8.4.27 以降か 8.5.12 以降（`composer.lock` の部品が PHP 8.4 以上を求めるため）。`php -v` で確かめます
+- Node.js：22 系は 22.23.4 以降、24 系は 24.22.1 以降、26 系は 26.12.1 以降。`node -v` で確かめます。20・23・25 は保守が終わっています
+- 本の手順で `composer create-project` から作る場合は、PHP 8.3.36 以降でも動きます
+
+`composer.json`・`package.json`・`.npmrc` で、これより古い版では `composer install` と `npm install` が止まるようにしています。章ごとのタグは変更前のままなので、タグを使うときも先に版を確かめてください。
+
+出典：[PHP 公式サイト](https://www.php.net/)、[Node.js のセキュリティリリース（2026年10月）](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases)
+
+## テストの実行
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+composer test
+```
+
+---
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
